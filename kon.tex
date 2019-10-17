@@ -31,8 +31,12 @@
 \begin{document}
 	
 \begin{center}
-Конспект по метрике к КР-1
+\textbf{Конспект по метрике к КР-1}\\[-10mm]
 \end{center}
+\begin{flushright}
+		\textit{Посвящается Зехову Матвею, лучшему ассистенту и\\
+			просто прекрасному и отзывчивому человеку, в честь 21-летия}\\[-2mm]
+\end{flushright}
 
 $\textcolor{red}{1) \text{ Парная регрессия: }} \e (Y \, | \, X = x) = \beta_0 + \beta_1 x$
 
@@ -58,12 +62,11 @@ n \hat{\beta}_0 + \sum\limits_1^n X_i \hat{\beta}_1 & = &\sum\limits_1^n Y_i\\[6
 \end{array}
 $
 
-$\textcolor{red}{3) \text{ Леммы:}}$
+$\textcolor{red}{3) \text{ Леммы:}}$\\[-8mm]
 \begin{enumerate}
 	\item Линия регрессии проходит через точку $(\bar{X}, \bar{Y})$, т.е. $\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$
 	
-	\textbf{Док-во}: $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} \Rightarrow$ \fbox{$\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$}
-	
+	\textbf{Док-во}: $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} \Rightarrow$ \fbox{$\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$}\\[-5mm]	
 	\item $\sum\limits_1^n e_i = 0$
 	
 	\textbf{Док-во}:
@@ -71,8 +74,7 @@ $\textcolor{red}{3) \text{ Леммы:}}$
 	$e_i = Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i$\\[3mm]
 	$\sum\limits_1^n e_i = \sum\limits_1^n Y_i - n \hat{\beta}_0 - \hat{\beta}_1 \msum X_i$
 	
-	$\frac{1}{n} \sum\limits_1^n e_i = \bar{Y} - \hat{\beta}_0 - \hat{\beta}_1 \bar{X} = 0 \Rightarrow$ \framebox{$\sum\limits_1^n e_i = 0$}
-	
+	$\frac{1}{n} \sum\limits_1^n e_i = \bar{Y} - \hat{\beta}_0 - \hat{\beta}_1 \bar{X} = 0 \Rightarrow$ \framebox{$\sum\limits_1^n e_i = 0$}\\[-3mm]
 	\item $\msum Y_i = \msum \hat{Y}_i$
 	
 	\begin{minipage}{0.5\textwidth}
@@ -84,7 +86,7 @@ $\textcolor{red}{3) \text{ Леммы:}}$
 	\textbf{Следствиe}:
 	
 	$\frac{1}{n} \msum e_i = \bar{Y} - \bar{\hat{Y}} = 0 \Rightarrow$ \fbox{$\bar{Y} = \bar{\hat{Y}}$}
-	\end{minipage}
+	\end{minipage}\\[-2mm]
 	\item $\msum X_i e_i = 0$
 	
 	\textbf{Док-во}:
