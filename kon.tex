@@ -34,7 +34,7 @@
 Конспект по метрике к КР-1
 \end{center}
 
-1) Парная регрессия: $\e (Y \, | \, X = x) = \beta_0 + \beta_1 x$
+$\textcolor{red}{1) \text{ Парная регрессия: }} \e (Y \, | \, X = x) = \beta_0 + \beta_1 x$
 
 $Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$ \qquad
 \parbox{3cm}{$Y_i$ -- зависимая; $X_i$ -- регрессор; $\epsilon_i$ -- навязка}
@@ -43,7 +43,7 @@ $Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \underset{\text{остаток}}{e_i}
 
 $\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
 
-2) МНК: $RSS \rightarrow min$
+$\textcolor{red}{2) \text{ МНК: }} RSS \rightarrow min$
 
 $FOC: \left\{
 \begin{array}{rcl}
@@ -58,7 +58,7 @@ n \hat{\beta}_0 + \sum\limits_1^n X_i \hat{\beta}_1 & = &\sum\limits_1^n Y_i\\[6
 \end{array}
 $
 
-3) Леммы:
+$\textcolor{red}{3) \text{ Леммы:}}$
 \begin{enumerate}
 	\item Линия регрессии проходит через точку $(\bar{X}, \bar{Y})$, т.е. $\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$
 	
@@ -97,7 +97,7 @@ $
 	$\msum \hat{Y}_i e_i = \msum (\hat{\beta}_0 + \hat{\beta}_1 X_i) e_i = \hat{\beta} \msum e_i + \hat{\beta}_1 \msum X_i e_i = 0 \Rightarrow$ \fbox{$\msum \hat{Y}_i e_i = 0$}
 \end{enumerate}
 
-4) $Y_i = \hat{Y}_i + e_i; \; \bar{Y} = \bar{\hat{Y}} \Rightarrow Y_i - \bar{Y} = \hat{Y}_i - \bar{\hat{Y}} + e_i$
+$\textcolor{red}{4)}$ $ Y_i = \hat{Y}_i + e_i; \; \bar{Y} = \bar{\hat{Y}} \Rightarrow Y_i - \bar{Y} = \hat{Y}_i - \bar{\hat{Y}} + e_i$
 
 $\msum (Y_i - \bar{Y})^2 = \msum (\hat{Y}_i - \bar{\hat{Y}})^2 + 2 (\msum \hat{Y}_i e_i - \bar{\hat{Y}} \msum e_i) + \msum e_i^2$
 
@@ -105,7 +105,7 @@ $\msum (Y_i - \bar{Y})^2 = \msum (\hat{Y}_i - \bar{\hat{Y}})^2 + \msum e_i^2$
 
 $TSS = ESS + RSS$
 
-5) Коэффициент детерминации $R^2$
+$\textcolor{red}{5) \text{Коэффициент детерминации } R^2:}$
 
 $R^2 = \frac{ESS}{TSS}; \; x_i = X_i - \bar{X}; \; y_i = Y_i - \bar{Y}; \; \bar{\hat{Y}} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$
 
@@ -113,7 +113,7 @@ $R^2 = \frac{\msum (\hat{Y}_i - \bar{\hat{Y}})^2}{\msum y_i^2} = \frac{\msum (\h
 
 $= \frac{\msum (x_i y_i)^2}{\msum x_i^2 \cdot \msum y_i^2} = \frac{sCov^2(X,Y)}{\svar(X) \cdot \svar(Y)} = sCorr^2(X,Y)$
 
-6) Регрессия без свободного члена
+$\textcolor{red}{6) \text{Регрессия без свободного члена:}}$
 
 \begin{minipage}{0.18\textwidth}
 $Y_i = \beta_1 X_i + \epsilon_i$\\[2mm]	
@@ -131,7 +131,7 @@ $c) \bar{Y} \ne \bar{\hat{Y}},$\\[2mm]
 то $R^2$ неприменим
 \end{minipage}
 
-7) Теорема Гаусса-Маркова для парной регрессии
+$\textcolor{red}{7) \text{Теорема Гаусса-Маркова для парной регрессии:}}$
 
 Если:\\[-9mm]
 \begin{enumerate}
@@ -144,7 +144,8 @@ $c) \bar{Y} \ne \bar{\hat{Y}},$\\[2mm]
 
 Тогд оценки МНК $\hat{\beta}_0, \, \hat{\beta}_1$ оптимальны (имеют наименьшую дисперсию) в классе линейных несмещенных оценок -- являются BLUE.
 
-8) МНК-оценки - случайные величины
+
+$\textcolor{red}{8) \text{ МНК-оценки - случайные величины:}}$
 $$\hat{\beta}_1 = \frac{sCov(X,Y)}{\svar(X)} = \frac{sCov(X,\beta_0 + \beta_1 X + \epsilon)}{\svar(X)} = \beta_1 \frac{\svar(X)}{\svar(X)} + \frac{sCov(X,\epsilon)}{\svar(X)} = \beta_1 + \frac{sCov(X,\epsilon)}{\svar(X)}$$
 $$\e(\hat{\beta}_1) = \e\left(\beta_1 + \frac{sCov(X,\epsilon)}{\svar(X)}\right) = \beta_1 + \frac{1}{\svar(X)} \cdot \e\left(\frac{1}{n-1} \msum(X_i - \bar{X})(\epsilon_i - \bar{\epsilon})\right) =$$
 $$= \beta_1 + \frac{1}{\svar(X)} \cdot \frac{1}{n-1} \cdot \msum (X_i - \bar{X})(\e(\epsilon_i) - \e(\bar{\epsilon})) \stackrel{\e(\epsilon) = \e(\bar{\epsilon})}{=} \beta_1$$
@@ -197,4 +198,47 @@ $$= \frac{1}{\jsum x_j^2} - \frac{1}{\jsum x_j^2} = 0 \Rightarrow \isum \tilde{w
 $\Rightarrow \msum \tilde{w}_i^2 \text{ достигает минимума при } \tilde{w}_i = w_i, \text{т.е. для оценок МНК.}$
 
 Для $\beta_0$ доказательство аналогично
+
+$\textcolor{red}{9) \text{ МНК - линейны по} Y \text{?}}$
+
+\begin{minipage}{0.28\textwidth}
+$$\hat{\beta}_1 = \frac{sCov(X,Y)}{\svar(X)}$$
+\end{minipage}
+\begin{minipage}{0.18\textwidth}
+$\text{Если } \tilde{Y} = nY,$ 
+\end{minipage}
+\begin{minipage}{0.28\textwidth}
+$\hat{\tilde{\beta}} = \frac{sCov(X,\tilde{Y})}{\svar(X)} = n\hat{\beta}_1$
+\end{minipage}
+
+$\textcolor{red}{10) \text{ Гипотезы о конкретном значении:}}$
+
+В рамках линейной модели усилим ТГМ утверждением 
+$\epsilon_i \sim N(0,\sigma_{\epsilon}^{2})$
+
+\textbf{Утверждение 1}: Если $\epsilon_i \sim N(0,\sigma_{\epsilon}^{2})$, то $\hat{\beta}_0 \sim N(\beta_0,\sigma_{\hat{\beta}_0}^{2})$, $\hat{\beta}_1 \sim N(\beta_1,\sigma_{\hat{\beta}_1}^{2})$
+
+$H_0: \beta_1 = \beta_1^{0}$
+
+Тогда Что-то тут написано $z = \frac{\hat{\beta}_1 - \beta_1^{0}}{\sigma_{\hat{\beta}_1}} \sim N(0,1)$
+
+В $\sigma_{\hat{\beta}_1}$ входит $\sigma_{\epsilon}^{2}$ и она неизвестна. Заменим оценкой $\hat{\sigma_{\epsilon}}^{2}$
+
+$z = \frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} \sim $ ?
+
+\textbf{Утверждение 2}:
+$$\sigma_{\epsilon}^{2} = \frac{RSS}{n - 2} - \text{несмещенная оценка } \sigma_{\epsilon}^{2}$$
+
+
+\textbf{Утверждение 3}:
+$$\sigma_{\epsilon}^{2} = \frac{RSS}{n - k} - \text{общий случай для k регрессоров (включая свободный член)}$$
+$n - k$ - число независимых слагаемых $RSS$. Степени свободы
+
+\textbf{Утверждение 4}:
+$$\frac{RSS}{\sigma_{\epsilon}^{2}} \sim \chi_{n -k}^{2} \text{, где } k \text{ - количество регрессоров}$$
+
+\textbf{Утверждение 5}: Оценки $\beta_1$ и $\hat{\sigma}_{\epsilon}^2$ независимы
+$$\hat{\sigma}_{\hat{\beta}_0^{2}} = \sqrt{\hat{\sigma}_{\epsilon^{2}} \cdot \frac{\sum{X_i^{2}}}{n\sum{X_i^{2}}}}$$ $$\hat{\sigma}_{\hat{\beta}_1^{2}} = \sqrt{\frac{\hat{\sigma}_{\epsilon^{2}}}{\sum{X_i^{2}}}}$$
+
+$\frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} =\frac{\frac{\hat{\beta}_1 - \beta_1^0}{\sigma_{\hat{\beta}_1}}}{\frac{\hat{\sigma}_{\hat{\beta}_1}}{\sigma_{\hat{\beta}_1}}} = $ продолжение следует...
 \end{document}
