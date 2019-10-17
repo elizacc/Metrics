@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.17)  18 OCT 2019 00:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.17)  18 OCT 2019 00:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,17 +949,17 @@ Overfull \hbox (13.4888pt too wide) in paragraph at lines 233--238
  []
 
 [4]
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 251--253
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 265--266
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
 
  []
 
@@ -996,7 +996,7 @@ live/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive
 /2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2018/texm
 f-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2018/texmf-dist/fon
 ts/type1/public/cm-super/sfrm1200.pfb>
-Output written on kon.pdf (6 pages, 167877 bytes).
+Output written on kon.pdf (6 pages, 167895 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream
