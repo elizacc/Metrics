@@ -244,13 +244,11 @@ $\displaystyle\frac{RSS}{\sigma_{\epsilon}^{2}} \sim \chi_{n -k}^{2} \text{, г�
 \textbf{Утверждение 5}: Оценки $\hat{\beta}_1$ и $\hat{\sigma}_{\epsilon}^2$ независимы
 $$\hat{\sigma}_{\hat{\beta}_0} = \sqrt{\hat{\sigma}_{\epsilon^{2}} \cdot \frac{\msum{X_i^{2}}}{n\msum{x_i^{2}}}}, \qquad \hat{\sigma}_{\hat{\beta}_1} = \sqrt{\frac{\hat{\sigma}_{\epsilon^{2}}}{\msum{x_i^{2}}}}$$
 
-$\displaystyle\frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} =\frac{(\hat{\beta}_1 - \beta_1^0) /\sigma_{\hat{\beta}_1}}{\hat{\sigma}_{\hat{\beta}_1}/ \sigma_{\hat{\beta}_1}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{\hat{\sigma}^2_{\hat{\beta}_1} (n-k)}{\sigma_{\hat{\beta}_1}^2} / (n-k)}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{RSS}{\sigma_{\hat{\beta}_1}^2} / (n-k)}}$
+$\displaystyle\frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} =\frac{(\hat{\beta}_1 - \beta_1^0) /\sigma_{\hat{\beta}_1}}{\hat{\sigma}_{\hat{\beta}_1}/ \sigma_{\hat{\beta}_1}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{\hat{\sigma}^2_{\hat{\beta}_1} (n-k)}{\sigma_{\hat{\beta}_1}^2} / (n-k)}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{RSS}{\sigma_{\epsilon}^2} / (n-k)}}$
 
-Так как $\displaystyle \frac{\hat{\beta}_1 - \beta_1^0}{\sigma_{\hat{\beta}_1}} \sim N(0, 1), \, \frac{RSS}{\sigma_{\hat{\beta}_1}^2} \sim \chi_{n -k}^2$ и они независимы, то
+Так как $\displaystyle \frac{\hat{\beta}_1 - \beta_1^0}{\sigma_{\hat{\beta}_1}} \sim N(0, 1), \, \frac{RSS}{\sigma_{\epsilon}^2} \sim \chi_{n -k}^2$ и они независимы, то
 
-$\displaystyle\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}} \sim t_{n-k} \qquad$ \fbox{\text{$\displaystyle\frac{\hat{\sigma}_{\hat{\beta}_1}}{\sigma_{\hat{\beta}_1}} = \frac{\hat{\sigma}_{\epsilon}^2 / \msum x_i^2}{\sigma_{\epsilon}^2 / \msum x_i^2} = \frac{\hat{\sigma_{\epsilon}}^2}{\sigma_{\epsilon}^2} = \frac{RSS/(n-2)}{\sigma_{\epsilon}^2} = \frac{RSS/\sigma_{\epsilon}^2}{n-2} \sim \chi^2_{n-k}$}}
-
-\colorbox{red}{Штуку сверху надо полностью перепроверить и исправить}
+$\displaystyle\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}} \sim t_{n-k} \qquad$ \fbox{\text{$\displaystyle\frac{\hat{\sigma}_{\hat{\beta}_1}}{\sigma_{\hat{\beta}_1}} = \frac{\hat{\sigma}_{\epsilon}^2 / \msum x_i^2}{\sigma_{\epsilon}^2 / \msum x_i^2} = \frac{\hat{\sigma_{\epsilon}}^2}{\sigma_{\epsilon}^2} = \frac{RSS/(n-2)}{\sigma_{\epsilon}^2} = \frac{\stackrel{\sim \chi^2_{n-k}}{RSS/\sigma_{\epsilon}^2}}{n-2}$}}
 
 ДИ для коэффициентов:
 $\displaystyle\left|\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}}\right| \le t^{cr}_{n-k} \Rightarrow |\hat{\beta}_1 - \beta_1^0| \le t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1}$
