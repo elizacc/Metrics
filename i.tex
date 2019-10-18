@@ -171,7 +171,8 @@ $\displaystyle\isum w_i^2 = \frac{\isum x_i^2}{(\jsum x_j^2)^2} = \frac{1}{\jsum
 
 $$\var(\hat{\beta}_1) = \var\left(\isum w_i y_i\right) = \isum w_i^2 \var(y_i) + \isum \jsum w_i w_j Cov(y_i, y_j) = \isum w_i^2 \sigma_{\epsilon}^2 = \fbox{\text{$\displaystyle\frac{\sigma_{\epsilon}^2}{\jsum x_j^2}$}}$$
 $$\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} = \frac{1}{n} \msum Y_i - \msum w_i (Y_i - \bar{Y}) \cdot \bar{X} = \msum \left(\frac{1}{n} - w_i \bar{X}\right) Y_i + \bar{X} \bar{Y} \msum w_i = \msum\left(\frac{1}{n} - w_i \bar{X}\right) Y_i$$
-$$\e(\beta_0) = \e\left(\msum\left(\frac{1}{n} - w_i \bar{X}\right) Y_i\right) = \msum\left(\frac{1}{n} - w_i \bar{X}\right) \e(Y_i) = 0??$$
+$$\e(\beta_0) = \e\left(\msum\left(\frac{1}{n} - w_i \bar{X}\right) Y_i\right) = \msum\left(\frac{1}{n} - w_i \bar{X}\right) \e(Y_i) = \msum\left(\frac{1}{n} - w_i \bar{X}\right) (\beta_0 + \beta_1 X_i) =$$
+$$= \beta_0 + \beta_1 \bar{X} - \frac{\bar{X}}{n} \msum w_i - \beta_1 \bar{X} \msum w_i X_i = \beta_0 + \beta_1 \bar{X} - \beta_1 \bar{X} \msum w_i X_i$$
 $$\var(\hat{\beta}_0) = \msum \left(\frac{1}{n^2} - \frac{2}{n} w_i \bar{X} + w_i^2 \bar{X}^2\right) \sigma_{\epsilon}^2 = \sigma_{\epsilon}^2 \left(\frac{1}{n} - \frac{2}{n} \bar{X} \msum w_i + \bar{X}^2 \msum w_i^2\right) = \sigma_{\epsilon}^2 \left(\frac{1}{n} + \frac{\bar{X}^2}{\msum x_i^2}\right) =$$
 $$= \sigma_{\epsilon}^2 \frac{\msum x_i^2 + n \bar{X}^2}{n \msum x_i^2} = \fbox{\text{$\displaystyle\sigma_{\epsilon}^2 \frac{\msum X_i^2}{n \msum x_i^2}$}}$$
 
@@ -185,7 +186,7 @@ $$Cov(\hat{\beta}_0, \hat{\beta}_1) = \frac{\sigma_{\epsilon}^2 \left(\frac{1}{n
 \textbf{Утверждение 2}: при выполнении условией ТГМ оценки $\hat{\beta}_0, \, \hat{\beta}_1$ являются лучшими, т.е. имеют наименьшую дисперсию в классе всех линейных несмещенных оценок
 
 Пусть $\tilde{\beta}_1 = \msum \tilde{w}_i Y_i$ -- другая несмещенная оценка, т.е. $\e(\tilde{\beta}_1) = \beta_1$
-$$\e(\tilde{\beta}_1) = \msum \tilde{w}_i \e(Y_i) = \msum \tilde{w}_i \e(\beta_0 + \beta_1 X_i + \epsilon_i) = \beta_0 \msum \tilde{w}_i + \beta_1 \msum \\tilde{w}_i X_i \equiv \beta_1 \Rightarrow$$
+$$\e(\tilde{\beta}_1) = \msum \tilde{w}_i \e(Y_i) = \msum \tilde{w}_i \e(\beta_0 + \beta_1 X_i + \epsilon_i) = \beta_0 \msum \tilde{w}_i + \beta_1 \msum \tilde{w}_i X_i \equiv \beta_1 \Rightarrow$$
 
 $\displaystyle(1) \msum \tilde{w}_i = 0$
 
