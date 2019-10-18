@@ -250,7 +250,9 @@ $\displaystyle\frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}}
 
 $\displaystyle\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}} \sim t_{n-k} \qquad$ \fbox{\text{$\displaystyle\frac{\hat{\sigma}_{\hat{\beta}_1}}{\sigma_{\hat{\beta}_1}} = \frac{\hat{\sigma}_{\epsilon}^2 / \msum x_i^2}{\sigma_{\epsilon}^2 / \msum x_i^2} = \frac{\hat{\sigma_{\epsilon}}^2}{\sigma_{\epsilon}^2} = \frac{RSS/(n-2)}{\sigma_{\epsilon}^2} = \frac{RSS/\sigma_{\epsilon}^2}{n-2} \sim \chi^2_{n-k}$}}
 
-Доверительный интервал для коэффициентов:
+\colorbox{red}{Штуку сверху надо полностью перепроверить и исправить}
+
+ДИ для коэффициентов:
 $\displaystyle\left|\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}}\right| \le t^{cr}_{n-k} \Rightarrow |\hat{\beta}_1 - \beta_1^0| \le t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1}$
 $$-t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1} - \hat{\beta}_1 \le -\beta_1^0 \le t^{cr}_{n-k} - \hat{\sigma}_{\hat{\beta}_1} - \hat{\beta}_1 \Rightarrow [\hat{\beta}_1 - t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1} ; \, \hat{\beta}_1 + t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1}]$$
 
