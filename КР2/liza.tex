@@ -1,1 +1,73 @@
 Лиза
+
+$\textcolor{red}{1) \text{ Модель множественной регрессии}}$\\[-7mm]
+\begin{itemize}
+	\item[$\diamond$] Скалярная форма:
+	
+	$\ds Y_i = \beta_0 + \beta_1 X_{1_i} + \dots + \beta_k X_{k_i} + \epsilon_i, \, i = 1..n$
+		
+	$\ds e_i = Y_i = \hat{Y}_i - \hat{\beta}_0 - \hat{\beta}_1 X_{1_i} - \dots - \hat{\beta}_k X_{k_i}$
+	\item[$\diamond$] Матричная форма:
+	
+	$\ds Y = \beta_0 I_n + \beta_1 X_1 + \dots + \beta_k X_k + \epsilon$
+	
+	$\ds Y = X \beta + \epsilon$\\[-8mm]
+\end{itemize}
+
+В скалярном случае надо решать $k+1$ нормальное уравнение.  Выпишем в дифференциальной форме?
+
+$\ds\textcolor{red}{2) \, RSS(\hat{\beta}) \rightarrow \min}$
+
+$\ds RSS = \isum e_i^2 = e^T e = (Y - X \hat{\beta})^T (Y - X \hat{\beta})$
+
+$\ds\frac{d RSS}{d \hat{\beta}} = d \hat{\beta}^T (-X)^T (Y - X \hat{\beta}) + (Y - X \hat{\beta})^T (-X) d \hat{\beta} = -2 (Y - X \hat{\beta})^T X d \hat{\beta}$
+
+$\ds X^T (Y - X \hat{\beta}) = 0 \Rightarrow$ \fbox{$\hat{\beta}_{k \times 1} = (X^T X)^{-1} X^T Y$}
+
+$\textcolor{red}{3) \text{ Оценка ковариационной матрицы} \hat{\beta} (y - \text{вектор})}$
+
+$\e(Ay) = A \e(y)$
+
+$\var(y + z) = \var(y) + \var(z) + 2Cov(y,z)$
+
+$\var(Ay) = A \var(y) A^T$
+
+$Cov(Ay, Bz) = A Cov(y,z) B^T$
+
+$\var(\hat{\beta}) = Var((X^T X)^{-1} X^T y) = (X^T X)^{-1} X^T \var(y) X (X^T X)^{-1} \stackrel{\var(y) = \sigma^2_{\epsilon} I}{=} \sigma^2 (X^T X)^{-1}$
+
+Дисперсия одной оценки (оценочная, не настоящая): $\ds \hat{\sigma_{\epsilon}} (X^T X)^{-1}_{jj}$ ??
+
+$\ds\textcolor{red}{4) \, \hat{\beta}_{\epsilon}^2 = \frac{RSS}{n - k} - \text{несмещенная оценка дисперсии ошибок}}$
+
+$k$ -- число регрессоров (включая константу)
+
+$\ds\textcolor{red}{5) \, \hat{\var}\hat{\beta} = \hat{\sigma_{\epsilon}}^2 (X^T X)^{-1} - \text{несмещенная оценка ковариационной матрица}}$
+
+$\ds\textcolor{red}{6) \text{ Теорема Гаусса-Маркова}}$
+
+Если:\\[-7mm]
+\begin{enumerate}
+	\item $Y = X \beta + u$
+	\item Оценивается регрессия $\hat{Y} = X \hat{\beta}$ с помощью МНК
+	\item $X$ могут быть случайными, $\p(\text{у матрицы} X \text{есть ЛЗ столбцы}) = 0$
+	\item $\e(u \, | \, X) = 0, \, \var(u \, | \, X) = \sigma^2 I$
+	\item $n \ge k$
+\end{enumerate}
+
+То:\\[-7mm]
+\begin{enumerate}
+	\item $\hat{\beta}$ существует и является единственной с вероятностью 1
+	\item $\hat{\beta}$ линейна по $y: \, \hat{\beta} = (X^T X)^{-1} X^T y$
+	\item $\e(\hat{\beta} \, | \, X) = \beta \, / \, \e(\hat{\beta}) = \beta$
+	\item $\hat{\beta}$ эффективна в классе линейных по $y$ и несмещенных оценок
+\end{enumerate}
+
+$\ds\textcolor{red}{6) \text{ Показатели качества подгонки регрессии}}$
+\begin{itemize}
+	\item $\ds R^2 = \frac{ESS}{TSS} = 1 - \frac{RSS}{TSS}$ -- не работает для регрессии без свободного члена
+	\item $\ds 0 \le R^2 \le 1$ \, \, \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad Пусть $y = Y - \bar Y$
+	\item $\ds R^2 = \frac{\hat{\var}(\hat{Y})}{\hat{\var}(Y)}$ \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad $\hat{y} = \hat{Y} - \bar{\hat{Y}}$
+	\item $\ds R^2 \rightarrow \underset{\hat{\beta}}{\max} \sim RSS \rightarrow \underset{\hat{\beta}}{\min}$
+	\item $\ds\hat{Corr}(Y, \hat{Y}) = \frac{\left(\isum y_i \cdot \hat{y}_i\right)^2}{\isum y_i^2 \isum \hat{y}_i^2} = \frac{\left(\isum(\hat{y}_i + e_i) \hat{y}_i\right)^2}{\isum y_i^2 \isum \hat{y}_i^2} = $
+\end{itemize}
