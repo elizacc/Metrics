@@ -1,0 +1,290 @@
+\documentclass[12pt]{article}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz} 
+\usetikzlibrary{arrows} 
+\usetikzlibrary{calc,positioning,fit,backgrounds} 
+\usetikzlibrary{decorations.pathreplacing,calc}
+\usepackage{pgfplots}
+\usepackage[russian]{babel}
+\parskip=6pt
+\usepackage{multicol}
+\usepackage{amssymb, amsmath}
+\oddsidemargin=-0,5cm
+\textwidth=18cm
+\topmargin=-3cm
+\pagestyle{plain}
+\textheight=25.5cm
+
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\n}{\mathbb{N}}
+\newcommand{\id}{\mathbb{I}}
+\newcommand{\re}{\mathbb{R}}
+\DeclareMathOperator{\plim}{plim}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\svar}{sVar}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\msum}{\sum\limits_1^n}
+\newcommand{\isum}{\sum\limits_i}
+\newcommand{\jsum}{\sum\limits_j}
+
+\begin{document}
+	
+\begin{center}
+\textbf{Конспект по метрике к КР-1}\\[-10mm]
+\end{center}
+\begin{flushright}
+		\textit{Посвящается Зехову Матвею, лучшему ассистенту и\\
+			просто прекрасному и отзывчивому человеку, в честь 21-летия}\\[-2mm]
+\end{flushright}
+
+$\textcolor{red}{1) \text{ Парная регрессия: }} \e (Y \, | \, X = x) = \beta_0 + \beta_1 x$
+
+$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$ \qquad
+\parbox{3cm}{$Y_i$ -- зависимая; $X_i$ -- регрессор; $\epsilon_i$ -- навязка}
+
+$Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \underset{\text{остаток}}{e_i} \qquad \qquad RSS = \sum\limits_1^n e_i^2 = \sum\limits_1^n (Y_i - \hat{Y}_i)^2$
+
+$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
+
+$\textcolor{red}{2) \text{ МНК: }} RSS \rightarrow min$
+
+$FOC: \left\{
+\begin{array}{rcl}
+n \hat{\beta}_0 + \sum\limits_1^n X_i \hat{\beta}_1 & = &\sum\limits_1^n Y_i\\[6mm]
+\sum\limits_1^n X_i \hat{\beta}_0 + \sum\limits_1^n X_i^2 \hat{\beta}_1 & = & \sum\limits_1^n X_i Y_i\\
+\end{array}
+\right.
+\Rightarrow
+\begin{array}{rcl}
+\hat{\beta}_1 & = &  \frac{\sum\limits_1^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sum\limits_1^n(X_i - \bar{X})^2} = \frac{sCov(X, Y)}{\svar(X)}\\[6mm]
+\hat{\beta}_0 & = & \bar{Y} - \hat{\beta}_1 \bar{X}\\
+\end{array}
+$
+
+$\textcolor{red}{3) \text{ Леммы:}}$\\[-8mm]
+\begin{enumerate}
+	\item Линия регрессии проходит через точку $(\bar{X}, \bar{Y})$, т.е. $\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$
+	
+	\textbf{Док-во}: $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} \Rightarrow$ \fbox{$\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$}\\[-5mm]	
+	\item $\sum\limits_1^n e_i = 0$
+	
+	\textbf{Док-во}:
+	
+	$e_i = Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i$\\[3mm]
+	$\sum\limits_1^n e_i = \sum\limits_1^n Y_i - n \hat{\beta}_0 - \hat{\beta}_1 \msum X_i$
+	
+	$\frac{1}{n} \sum\limits_1^n e_i = \bar{Y} - \hat{\beta}_0 - \hat{\beta}_1 \bar{X} = 0 \Rightarrow$ \framebox{$\sum\limits_1^n e_i = 0$}\\[-3mm]
+	\item $\msum Y_i = \msum \hat{Y}_i$
+	
+	\begin{minipage}{0.5\textwidth}
+	\textbf{Док-во}:
+	
+	$\msum e_i = \msum Y_i - \msum \hat{Y}_i = 0 \Rightarrow$ \fbox{$\msum Y_i = \msum \hat{Y}_i$}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+	\textbf{Следствиe}:
+	
+	$\frac{1}{n} \msum e_i = \bar{Y} - \bar{\hat{Y}} = 0 \Rightarrow$ \fbox{$\bar{Y} = \bar{\hat{Y}}$}
+	\end{minipage}\\[-2mm]
+	\item $\msum X_i e_i = 0$
+	
+	\textbf{Док-во}:
+	
+	$\frac{\partial RSS}{\partial \hat{\beta}_1} = -2 \msum (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 \Rightarrow$ \fbox{$\msum X_i e_i = 0$}
+	\item $\msum \hat{Y}_i e_i = 0$
+	
+	\textbf{Док-во}:
+	
+	$\msum \hat{Y}_i e_i = \msum (\hat{\beta}_0 + \hat{\beta}_1 X_i) e_i = \hat{\beta} \msum e_i + \hat{\beta}_1 \msum X_i e_i = 0 \Rightarrow$ \fbox{$\msum \hat{Y}_i e_i = 0$}
+\end{enumerate}
+
+$\textcolor{red}{4)}$ $ Y_i = \hat{Y}_i + e_i; \; \bar{Y} = \bar{\hat{Y}} \Rightarrow Y_i - \bar{Y} = \hat{Y}_i - \bar{\hat{Y}} + e_i$
+
+$\msum (Y_i - \bar{Y})^2 = \msum (\hat{Y}_i - \bar{\hat{Y}})^2 + 2 (\msum \hat{Y}_i e_i - \bar{\hat{Y}} \msum e_i) + \msum e_i^2$
+
+$\msum (Y_i - \bar{Y})^2 = \msum (\hat{Y}_i - \bar{\hat{Y}})^2 + \msum e_i^2$
+
+$TSS = ESS + RSS$
+
+$\textcolor{red}{5) \text{ Коэффициент детерминации } R^2:}$
+
+$R^2 = \frac{ESS}{TSS}; \; x_i = X_i - \bar{X}; \; y_i = Y_i - \bar{Y}; \; \bar{\hat{Y}} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$
+
+$R^2 = \frac{\msum (\hat{Y}_i - \bar{\hat{Y}})^2}{\msum y_i^2} = \frac{\msum (\hat{\beta}_0 + \hat{\beta}_1 X_i - \hat{\beta}_0 - \hat{\beta}_1 \bar{X})^2}{\msum y_i^2} = \frac{\msum (\hat{\beta}_1 x_i)^2}{\msum y_i^2} = \frac{\hat{\beta}_1^2 \msum x_i^2}{\msum y_i^2} = \frac{\msum (x_i y_i)^2 \cdot \msum x_i^2}{(\msum x_i^2)^2 \cdot \msum y_i^2} =$
+
+$= \frac{\msum (x_i y_i)^2}{\msum x_i^2 \cdot \msum y_i^2} = \frac{sCov^2(X,Y)}{\svar(X) \cdot \svar(Y)} = sCorr^2(X,Y)$
+
+$\textcolor{red}{6) \text{ Регрессия без свободного члена:}}$
+
+\begin{minipage}{0.18\textwidth}
+$Y_i = \beta_1 X_i + \epsilon_i$\\[2mm]	
+$\hat{Y}_i = \hat{\beta}_1 X_i$\\[2mm]		
+$e_i = Y_i - \hat{\beta}_1 X_i$
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+$RSS \rightarrow \min: \hat{\beta}_1 = \frac{\msum x_i y_i}{\msum x_i^2}$
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$a) \msum e_i \ne 0$\\[2mm]		
+$b) \msum Y_i \ne \msum \hat{Y}_i$\\[2mm]		
+$c) \bar{Y} \ne \bar{\hat{Y}}$\\[2mm]
+$R^2$ неприменим
+\end{minipage}
+
+$\textcolor{red}{7) \text{ Теорема Гаусса-Маркова для парной регрессии:}}$
+
+Если:\\[-9mm]
+\begin{enumerate}
+	\item Модель правильно специфицирована
+	\item Все $X_i$ детерминированы и не равны между собой
+	\item Ошибки не носят систематического характера, т.е. $\e(\epsilon_i) =  \forall i$
+	\item $\var(\epsilon_i) = \sigma_{\epsilon}^2 \forall i$
+	\item Ошибки некоррелированы
+\end{enumerate}
+
+Тогд оценки МНК $\hat{\beta}_0, \, \hat{\beta}_1$ оптимальны (имеют наименьшую дисперсию) в классе линейных несмещенных оценок -- являются BLUE.
+
+
+$\textcolor{red}{8) \text{ МНК-оценки - случайные величины:}}$
+$$\hat{\beta}_1 = \frac{sCov(X,Y)}{\svar(X)} = \frac{sCov(X,\beta_0 + \beta_1 X + \epsilon)}{\svar(X)} = \beta_1 \frac{\svar(X)}{\svar(X)} + \frac{sCov(X,\epsilon)}{\svar(X)} = \beta_1 + \frac{sCov(X,\epsilon)}{\svar(X)}$$
+$$\e(\hat{\beta}_1) = \e\left(\beta_1 + \frac{sCov(X,\epsilon)}{\svar(X)}\right) = \beta_1 + \frac{1}{\svar(X)} \cdot \e\left(\frac{1}{n-1} \msum(X_i - \bar{X})(\epsilon_i - \bar{\epsilon})\right) =$$
+$$= \beta_1 + \frac{1}{\svar(X)} \cdot \frac{1}{n-1} \cdot \msum (X_i - \bar{X})(\e(\epsilon_i) - \e(\bar{\epsilon})) \stackrel{\e(\epsilon) = \e(\bar{\epsilon})}{=} \beta_1$$
+\textbf{Утверждение 1}: $\displaystyle\var(\hat{\beta}_1) = \frac{\sigma_{\epsilon}^2}{\msum x_i^2}; \var(\hat{\beta}_0) = \frac{\sigma_{\epsilon}^2 \msum x_i^2}{n \msum x_i^2}$
+
+$\displaystyle\hat{\beta}_1 = \frac{\isum x_i y_i}{\jsum x_j^2} = \isum \frac{x_i}{\jsum x_j} y_i = \isum w_i y_i$
+
+\begin{minipage}{0.51\textwidth}
+$a) \displaystyle\isum w_i = 0$\\
+
+$\displaystyle\isum w_i = \frac{\isum x_i}{\jsum x_j^2} = \frac{\isum(X_i - \bar{X})}{\jsum x_j^2} = \frac{n\bar{X} - n\bar{X}}{\jsum x_j^2} = 0$
+\end{minipage}
+\begin{minipage}{0.18\textwidth}
+$b) \displaystyle\isum w_i x_i = 1$\\[2mm]
+$\displaystyle\frac{\isum x_i \cdot x_i}{\jsum x_j^2} = 1$
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$c) \displaystyle\isum w_i^2 = \frac{1}{\jsum x_j^2}$\\[2mm]
+
+$\displaystyle\isum w_i^2 = \frac{\isum x_i^2}{(\jsum x_j^2)^2} = \frac{1}{\jsum x_j^2}$\\[3mm]
+\end{minipage}
+
+$$\var(\hat{\beta}_1) = \var\left(\isum w_i y_i\right) = \isum w_i^2 \var(y_i) + \isum \jsum w_i w_j Cov(y_i, y_j) = \isum w_i^2 \sigma_{\epsilon}^2 = \fbox{\text{$\displaystyle\frac{\sigma_{\epsilon}^2}{\jsum x_j^2}$}}$$
+$$\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} = \frac{1}{n} \msum Y_i - \msum w_i (Y_i - \bar{Y}) \cdot \bar{X} = \msum \left(\frac{1}{n} - w_i \bar{X}\right) Y_i + \bar{X} \bar{Y} \msum w_i = \msum\left(\frac{1}{n} - w_i \bar{X}\right) Y_i$$
+$$\var(\hat{\beta}_0) = \msum \left(\frac{1}{n^2} - \frac{2}{n} w_i \bar{X} + w_i^2 \bar{X}^2\right) \sigma_{\epsilon}^2 = \sigma_{\epsilon}^2 \left(\frac{1}{n} - \frac{2}{n} \bar{X} \msum w_i + \bar{X}^2 \msum w_i^2\right) = \sigma_{\epsilon}^2 \left(\frac{1}{n} + \frac{\bar{X}^2}{\msum x_i^2}\right) =$$
+$$= \sigma_{\epsilon}^2 \frac{\msum x_i^2 + n \bar{X}^2}{n \msum x_i^2} = \fbox{\text{$\displaystyle\sigma_{\epsilon}^2 \frac{\msum X_i^2}{n \msum x_i^2}$}}$$
+
+$\displaystyle Cov(\hat{\beta}_0, \hat{\beta}_1) - ?$
+
+$\displaystyle\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}; \; \var(\bar{Y}) = \frac{\sigma_{\epsilon}^2}{n}$
+$$\var(\hat{\beta}_0 + \hat{\beta}_1 \bar{X}) = \var(\hat{\beta}_0) + 2 \bar{X} Cov(\hat{\beta}_0, \hat{\beta}_1) + \bar{X}^2 \var(\hat{\beta}_1)$$
+$$\frac{\sigma_{\epsilon}^2}{n} = \sigma_{\epsilon}^2 \frac{\msum X_i^2}{n \msum x_i^2} + 2 \bar{X} Cov(\hat{\beta}_0, \hat{\beta}_1) + \bar{X}^2 \frac{\sigma_{\epsilon}^2}{\jsum x_i^2}$$
+$$Cov(\hat{\beta}_0, \hat{\beta}_1) = \frac{\sigma_{\epsilon}^2 \left(\frac{1}{n} - \frac{1}{n} -  \frac{\bar{X}^2}{\msum x_i^2} - \frac{\bar{X}^2}{\msum x_i^2}\right)}{2\bar{X}} = \displaystyle\frac{- \sigma_{\epsilon}^2 \cdot 2 \bar{X}^2}{2 \bar{X} \msum x_i^2} = \fbox{\text{$\displaystyle -\frac{\sigma_{\epsilon}^2 \cdot \bar{X}}{\msum x_i^2}$}}$$
+
+\textbf{Утверждение 2}: при выполнении условий ТГМ оценки $\hat{\beta}_0, \, \hat{\beta}_1$ являются лучшими, т.е. имеют наименьшую дисперсию в классе всех линейных несмещенных оценок
+
+Пусть $\tilde{\beta}_1 = \msum \tilde{w}_i Y_i$ -- другая несмещенная оценка, т.е. $\e(\tilde{\beta}_1) = \beta_1$
+
+$\displaystyle\e(\tilde{\beta}_1) = \msum \tilde{w}_i \e(Y_i) = \msum \tilde{w}_i \e(\beta_0 + \beta_1 X_i + \epsilon_i) = \beta_0 \msum \tilde{w}_i + \beta_1 \msum \tilde{w}_i X_i \equiv \beta_1 \Rightarrow \; \; \;$
+\begin{minipage}{0.3\textwidth}
+$\displaystyle(1) \msum \tilde{w}_i = 0$
+
+$\displaystyle(2) \msum \tilde{w}_i x_i = 1$
+\end{minipage}
+
+Т.е. необходимо решить задачу:
+$\displaystyle \var(\tilde{\beta}_1) = \sigma_{\epsilon}^2 \msum \tilde{w}_i^2 \rightarrow \min$ при ограничениях (1) и (2)
+$$\msum \tilde{w}_2^2 = \msum(\tilde{w}_i - w_i + w_i)^2 = \msum(\tilde{w}_i - w_i)^2 + 2\msum(\tilde{w}_i - w_i)w_i + \msum w_i^2$$
+$$\isum (\tilde{w}_i - w_i) w_i = \isum \tilde{w}_i \cdot w_i - \isum w_i^2 = \isum \tilde{w}_i \frac{(X_i - \bar{X})}{\jsum x_j^2} - \isum w_i^2 = \frac{1}{\jsum x_j^2} \left(\isum \tilde{w}_i X_i - \bar{X} \msum \tilde{w}_i\right) - \frac{1}{\jsum x_j^2} =$$
+$$= \frac{1}{\jsum x_j^2} - \frac{1}{\jsum x_j^2} = 0 \Rightarrow \isum \tilde{w}_i^2 = \msum(\tilde{w}_i - w_i)^2 + \frac{1}{\jsum x_j^2}$$
+$\Rightarrow \msum \tilde{w}_i^2 \text{ достигает минимума при } \tilde{w}_i = w_i, \text{т.е. для оценок МНК.}$
+
+Для $\beta_0$ доказательство аналогично
+
+$\textcolor{red}{9) \text{ МНК -- линейны по} Y}$
+
+\begin{minipage}{0.28\textwidth}
+$$\hat{\beta}_1 = \frac{sCov(X,Y)}{\svar(X)}$$
+\end{minipage}
+\begin{minipage}{0.18\textwidth}
+$\text{Если } \tilde{Y} = nY,$ 
+\end{minipage}
+\begin{minipage}{0.28\textwidth}
+$\hat{\tilde{\beta}} = \frac{sCov(X,\tilde{Y})}{\svar(X)} = n\hat{\beta}_1$
+\end{minipage}
+
+$\textcolor{red}{10) \text{ Гипотезы о конкретном значении:}}$
+
+В рамках линейной модели усилим ТГМ утверждением 
+$\epsilon_i \sim N(0,\sigma_{\epsilon}^{2})$
+
+\textbf{Утверждение 1}: Если $\epsilon_i \sim N(0,\sigma_{\epsilon}^{2})$, то $\hat{\beta}_0 \sim N(\beta_0,\sigma_{\hat{\beta}_0}^{2})$, $\hat{\beta}_1 \sim N(\beta_1,\sigma_{\hat{\beta}_1}^{2})$
+
+$H_0: \beta_1 = \beta_1^{0}$
+
+Тогда статистика $\displaystyle z = \frac{\hat{\beta}_1 - \beta_1^{0}}{\sigma_{\hat{\beta}_1}} \sim N(0,1)$
+
+В $\sigma_{\hat{\beta}_1}^2$ входит $\sigma_{\epsilon}^{2}$ и она неизвестна. Заменим оценкой $\hat{\sigma_{\epsilon}}^{2}$
+
+$\displaystyle z = \frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} \sim $ ?
+
+\textbf{Утверждение 2}:
+$\displaystyle\hat{\sigma}_{\epsilon}^{2} = \frac{RSS}{n - 2} - \text{несмещенная оценка } \sigma_{\epsilon}^{2}$
+
+
+\textbf{Утверждение 3}:
+\begin{minipage}{0.8\textwidth}
+	$\displaystyle\hat{\sigma}_{\epsilon}^{2} = \frac{RSS}{n - k} - \text{общий случай для k регрессоров (включая свободный член),}$\\[1mm]
+	$n - k$ -- число независимых слагаемых $RSS$, степени свободы
+\end{minipage}
+
+\textbf{Утверждение 4}:
+$\displaystyle\frac{RSS}{\sigma_{\epsilon}^{2}} \sim \chi_{n -k}^{2} \text{, где } k \text{ - количество регрессоров}$
+
+\textbf{Утверждение 5}: Оценки $\hat{\beta}_1$ и $\hat{\sigma}_{\epsilon}^2$ независимы
+$$\hat{\sigma}_{\hat{\beta}_0} = \sqrt{\hat{\sigma}_{\epsilon^{2}} \cdot \frac{\msum{X_i^{2}}}{n\msum{x_i^{2}}}}, \qquad \hat{\sigma}_{\hat{\beta}_1} = \sqrt{\frac{\hat{\sigma}_{\epsilon^{2}}}{\msum{x_i^{2}}}}$$
+
+$\displaystyle\frac{\hat{\beta}_1 - \beta_1^{0}}{\hat{\sigma}_{\hat{\beta}_{1}}} =\frac{(\hat{\beta}_1 - \beta_1^0) /\sigma_{\hat{\beta}_1}}{\hat{\sigma}_{\hat{\beta}_1}/ \sigma_{\hat{\beta}_1}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{\hat{\sigma}^2_{\hat{\beta}_1} (n-k)}{\sigma_{\hat{\beta}_1}^2} / (n-k)}} = \frac{(\hat{\beta}_1 - \beta_1^0)/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{RSS}{\sigma_{\epsilon}^2} / (n-k)}}$
+
+Так как $\displaystyle \frac{\hat{\beta}_1 - \beta_1^0}{\sigma_{\hat{\beta}_1}} \sim N(0, 1), \, \frac{RSS}{\sigma_{\epsilon}^2} \sim \chi_{n -k}^2$ и они независимы, то
+
+$\displaystyle\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}} \sim t_{n-k} \qquad$ \fbox{\text{$\displaystyle\frac{\hat{\sigma}_{\hat{\beta}_1}}{\sigma_{\hat{\beta}_1}} = \frac{\hat{\sigma}_{\epsilon}^2 / \msum x_i^2}{\sigma_{\epsilon}^2 / \msum x_i^2} = \frac{\hat{\sigma_{\epsilon}}^2}{\sigma_{\epsilon}^2} = \frac{RSS/(n-2)}{\sigma_{\epsilon}^2} = \frac{\stackrel{\sim \chi^2_{n-k}}{RSS/\sigma_{\epsilon}^2}}{n-2}$}}
+
+ДИ для коэффициентов:
+$\displaystyle\left|\frac{\hat{\beta}_1 - \beta_1^0}{\hat{\sigma}_{\hat{\beta}_1}}\right| \le t^{cr}_{n-k} \Rightarrow |\hat{\beta}_1 - \beta_1^0| \le t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1}$
+$$-t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1} - \hat{\beta}_1 \le -\beta_1^0 \le t^{cr}_{n-k} - \hat{\sigma}_{\hat{\beta}_1} - \hat{\beta}_1 \Rightarrow [\hat{\beta}_1 - t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1} ; \, \hat{\beta}_1 + t^{cr}_{n-k} \cdot \hat{\sigma}_{\hat{\beta}_1}]$$
+
+$\textcolor{red}{11) \text{ Прогнозирование:}}$
+
+a) Точечный прогноз
+
+$Y_i = \beta_0 + \beta_1 X_i + \epsilon_i$
+
+$Y_{n+1} = \hat{\beta}_0 + \hat{\beta}_1 X_{n+1}$ -- точечный прогноз
+
+b) Интервальный прогноз (ИП) индивидуальный (= предикативный)
+
+$Y_{n+1} = \beta_0 + \beta_1 X_{n+1} + \epsilon_{n+1}$
+$$e^{ind}_{n+1} = Y_{n+1} - \hat{Y}_{n+1} = \beta_0 + \beta_1 X_{n+1} + \epsilon_{n+1} - \hat{\beta}_0 - \hat{\beta}_1 X_{n+1} = \epsilon_{n+1} + \beta_0 - \hat{\beta}_0 + (\beta_1 - \hat{\beta}_1) X_{n+1}$$
+$$\var(e^{ind}) = \var(\epsilon_{n+1}) + \var[(\beta_0 - \hat{\beta}_0) + (\beta_1 - \hat{\beta}_1) X_{n+1}] = $$
+$$= \sigma_{\epsilon}^2 + \var(\hat{\beta}_0) + X^2_{n+1} \var(\hat{\beta}_1) + 2 X_{n+1} Cov[(\beta_0 - \hat{\beta}_0), \, (\beta_1 - \hat{\beta}_1)] = $$
+$$= \sigma_{\epsilon}^2 + \var(\hat{\beta}_0) + X^2_{n+1} \var(\hat{\beta}_1) + 2 X_{n+1} Cov(\hat{\beta}_0, \hat{\beta}_1) = $$
+$$= \sigma_{\epsilon}^2 \left(1 + \frac{1}{n} + \frac{\bar{X}^2}{\msum x_i^2} + \frac{X_{n+1}^2}{\msum x_i^2} - \frac{2 X_{n+1} \bar{X}}{\msum x_i^2}\right) =$$
+$$= \sigma_{\epsilon}^2 \left(1 + \frac{1}{n} + \frac{\bar{X}^2 + X^2_{n+1} - 2 X_{n+1} \bar{X}}{\msum x_i^2}\right) = \sigma_{\epsilon}^2 \left(1 + \frac{1}{n} + \frac{(X_{n+1} - \bar{X})^2}{\msum x_i^2}\right)$$
+
+$\displaystyle\frac{\hat{Y}_{n+1} - Y_{n+1}}{\sqrt{\hat{\var}(e^{ind}_{n+1})}} \sim t_{n-k}$
+
+ДИ для индивидуального прогноза:
+$$[\hat{\beta}_0 + \hat{\beta}_1 X_{n+1} - t^{cr}_{n-k} \cdot \sqrt{\hat{\var}(e^{ind}_{n+1})} \le Y_{n+1} \le \hat{\beta}_0 + \hat{\beta}_1 X_{n+1} + t^{cr}_{n-k} \cdot \sqrt{\hat{\var}(e^{ind}_{n+1})}]$$
+
+c) Индивидуальный прогноз для среднего
+
+$$\e(Y_{n+1} \, | \, X) = \e(\beta_0 + \beta_1 X_{n+1} + \epsilon_{n+1} \, | \, X = X_{n+1})$$
+
+Ошибка прогноза:
+$$e^{mean}_{n+1} = \e(Y_{n+1} \, | \, X = X_{n+1}) - \hat{Y}_{n+1} = \beta_0 + \beta_1 X_{n+1} - \hat{\beta}_0 - \hat{\beta}_1 X_{n+1} = (\beta_0 - \hat{\beta}_0) + X_{n+1}(\beta_1 - \hat{\beta}_1)$$
+$$\var(e^{mean}_{n+1}) = \var(\beta_0 - \hat{\beta}_0) + X^2_{n+1} \var(\beta_1 - \hat{\beta}_1) + 2 X_{n+1} Cov(\beta_0 - \hat{\beta}_0, \, \beta_1 - \hat{\beta}_1) = \dots = \sigma_{\epsilon}^2 \left(\frac{1}{n} + \frac{(X_{n+1} - \bar{X})^2}{\msum x_i^2}\right)$$
+
+ДИ для среднего прогноза:
+$$[\hat{\beta}_0 \hat{\beta}_1 X_{n+1} - t^{cr}_{n-k} \cdot \sqrt{\hat{\var}(e^{mean}_{n+1})}; \, \hat{\beta}_0 \hat{\beta}_1 X_{n+1} + t^{cr}_{n-k} \cdot \sqrt{\hat{\var}(e^{mean}_{n+1})}]$$
+\end{document}
